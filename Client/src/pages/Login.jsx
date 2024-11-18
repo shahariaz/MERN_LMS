@@ -22,6 +22,14 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const handleInput = (e, type) => {
+    const { name, value } = e.target;
+    if (type === "login") {
+      setloginInput({ ...loginInput, [name]: value });
+    } else {
+      setsignupInput({ ...signupInput, [name]: value });
+    }
+  };
   return (
     <div className=' flex items-center justify-center '>
       <Tabs defaultValue='account' className='w-[400px]'>
@@ -45,9 +53,7 @@ const Login = () => {
                   type='text'
                   required='true'
                   placeholder='shahariaz..'
-                  onChange={(e) =>
-                    setsignupInput({ ...signupInput, name: e.target.value })
-                  }
+                  onChange={(e) => handleInput(e)}
                 />
               </div>
               <div className='space-y-1'>
@@ -57,9 +63,7 @@ const Login = () => {
                   type='email'
                   placeholder='saru@gmail.com'
                   required='true'
-                  onChange={(e) =>
-                    setsignupInput({ ...signupInput, email: e.target.value })
-                  }
+                  onChange={(e) => handleInput(e)}
                 />
               </div>
               <div className='space-y-1'>
@@ -69,9 +73,7 @@ const Login = () => {
                   type='password'
                   placeholder='********'
                   required='true'
-                  onChange={(e) =>
-                    setsignupInput({ ...signupInput, password: e.target.value })
-                  }
+                  onChange={(e) => handleInput(e)}
                 />
               </div>
             </CardContent>
@@ -96,9 +98,7 @@ const Login = () => {
                   type='email'
                   placeholder='saru@gmail.com'
                   required='true'
-                  onChange={(e) =>
-                    setloginInput({ ...loginInput, email: e.target.value })
-                  }
+                  onChange={(e) => handleInput(e, "login")}
                 />
               </div>
               <div className='space-y-1'>
@@ -108,9 +108,7 @@ const Login = () => {
                   type='password'
                   placeholder='********'
                   required='true'
-                  onChange={(e) =>
-                    setloginInput({ ...loginInput, password: e.target.value })
-                  }
+                  onChange={(e) => handleInput(e, "login")}
                 />
               </div>
             </CardContent>
