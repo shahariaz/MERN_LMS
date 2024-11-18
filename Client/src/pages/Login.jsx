@@ -30,6 +30,10 @@ const Login = () => {
       setsignupInput({ ...signupInput, [name]: value });
     }
   };
+  const handleSubmit = (type) => {
+    const inputData = type === "login" ? loginInput : signupInput;
+    console.log(inputData);
+  };
   return (
     <div className=' flex items-center justify-center '>
       <Tabs defaultValue='account' className='w-[400px]'>
@@ -51,6 +55,7 @@ const Login = () => {
                 <Input
                   id='name'
                   type='text'
+                  name='name'
                   required='true'
                   placeholder='shahariaz..'
                   onChange={(e) => handleInput(e)}
@@ -61,6 +66,7 @@ const Login = () => {
                 <Input
                   id='email'
                   type='email'
+                  name='email'
                   placeholder='saru@gmail.com'
                   required='true'
                   onChange={(e) => handleInput(e)}
@@ -71,6 +77,7 @@ const Login = () => {
                 <Input
                   id='password'
                   type='password'
+                  name='password'
                   placeholder='********'
                   required='true'
                   onChange={(e) => handleInput(e)}
@@ -78,7 +85,7 @@ const Login = () => {
               </div>
             </CardContent>
             <CardFooter>
-              <Button>SingUp</Button>
+              <Button onClick={() => handleSubmit()}>SingUp</Button>
             </CardFooter>
           </Card>
         </TabsContent>
@@ -96,6 +103,7 @@ const Login = () => {
                 <Input
                   id='email'
                   type='email'
+                  name='email'
                   placeholder='saru@gmail.com'
                   required='true'
                   onChange={(e) => handleInput(e, "login")}
@@ -106,6 +114,7 @@ const Login = () => {
                 <Input
                   id='password'
                   type='password'
+                  name='password'
                   placeholder='********'
                   required='true'
                   onChange={(e) => handleInput(e, "login")}
@@ -113,7 +122,7 @@ const Login = () => {
               </div>
             </CardContent>
             <CardFooter>
-              <Button>Login</Button>
+              <Button onClick={() => handleSubmit("login")}>Login</Button>
             </CardFooter>
           </Card>
         </TabsContent>
